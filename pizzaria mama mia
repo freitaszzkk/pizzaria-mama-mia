@@ -1,0 +1,33 @@
+import pandas as pd
+import streamlit as st
+st.title("🍕pizzaria Mama Mia")
+tamanho = st.selectbox("escolha o tamanho da pizza:", ["pequena", "media", "grande"])
+sabor = st.selectbox("escolha o sabor da pizza:", ["calabresa", "margherita", "frango com catupiry"])
+bebida = st.selectbox("queres alguma bebida?", ["nenhuma", "coca cola", "guarana", "fanta", "agua"])
+ 
+if tamanho == "pequena":
+        preco_tamanho = 20
+elif tamanho == "media":
+        preco_tamanho = 35
+else:
+        preco_tamanho = 50
+    
+if bebida == "coca cola":
+     preco_bebida = 8
+elif bebida == "guarana":
+     preco_bebida = 7 
+elif bebida == "fanta":
+     preco_bebida = 8
+elif bebida == "agua":
+     preco_bebida = 5
+else:
+     preco_bebida = 0
+if st.button("calcular preco"):
+                total = preco_tamanho + preco_bebida
+                st.success(f"pedido: pizza {tamanho} de {sabor} com {bebida}. o preco total e {total} R$")
+st.subheader("🗺 acompanhamento da entrega em arraial do cabo")
+dados_mapa = pd.DataFrame({"lat": [-22.9705, -22.9680],
+"lon": [-42.0255, -42.0210],})
+st.map(dados_mapa)
+st.info("tempo estimado de entrega na regiao: **25 a 35 minutos **")
+
